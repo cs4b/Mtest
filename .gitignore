@@ -148,6 +148,20 @@ pip-freeze.txt
 .env.local
 
 # ============================================================================
+# Documentation & Setup Files (removed from tracking)
+# ============================================================================
+GITLAB_CLEANUP_ANALYSIS.md
+GITLAB_SETUP_GUIDE.md
+GITLAB_UPLOAD_READY.md
+README_OLD.md
+RECOMMENDED-.gitignore
+SETUP_GUIDE.md
+SETUP_SUMMARY.md
+SUMMARY.md
+THESIS_MODIFICATIONS_APPLIED.md
+check_push_size.py
+
+# ============================================================================
 # Temporary & System Files
 # ============================================================================
 *.tmp
