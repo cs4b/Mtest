@@ -11,6 +11,7 @@
 !*.json
 !*.py
 !*.md
+!scoring_functions/*.pkl         # Classifiers (~60 MB total, under limit)
 
 # ============================================================================
 # BLACKLIST: Ignore large files (should NOT be tracked)
@@ -21,7 +22,7 @@
 *.pth
 *.pt
 *.h5
-*.pkl
+*.pkl                             # General ignore for .pkl files
 *.pickle
 *.dill
 

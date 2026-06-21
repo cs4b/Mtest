@@ -65,6 +65,17 @@ FILE_MAPPINGS = [
     ('scoring_functions/guacamol_thresholds.json',
      'diverse-hits/data/scoring_functions/guacamol_thresholds.json',
      'GuacaMol thresholds'),
+    
+    # Classifiers (~60 MB total, small enough to track)
+    ('scoring_functions/drd2_classifier.pkl',
+     'diverse-hits/data/scoring_functions/drd2/classifier.pkl',
+     'DRD2 activity classifier'),
+    ('scoring_functions/gsk3_classifier.pkl',
+     'diverse-hits/data/scoring_functions/gsk3/classifier.pkl',
+     'GSK3 activity classifier'),
+    ('scoring_functions/jnk3_classifier.pkl',
+     'diverse-hits/data/scoring_functions/jnk3/classifier.pkl',
+     'JNK3 activity classifier'),
 ]
 
 # Large files that need to be obtained separately
@@ -78,21 +89,6 @@ LARGE_FILES = {
         'size': '29 MB',
         'description': 'RNN pre-trained model',
         'source': 'Papyrus database or diverse-hits release'
-    },
-    'diverse-hits/data/scoring_functions/drd2/classifier.pkl': {
-        'size': '71 MB',
-        'description': 'DRD2 activity classifier',
-        'source': 'diverse-hits data package'
-    },
-    'diverse-hits/data/scoring_functions/gsk3/classifier.pkl': {
-        'size': '78 MB',
-        'description': 'GSK3 activity classifier',
-        'source': 'diverse-hits data package'
-    },
-    'diverse-hits/data/scoring_functions/jnk3/classifier.pkl': {
-        'size': '36 MB',
-        'description': 'JNK3 activity classifier',
-        'source': 'diverse-hits data package'
     },
 }
 
