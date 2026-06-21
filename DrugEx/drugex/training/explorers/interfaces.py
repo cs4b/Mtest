@@ -13,6 +13,9 @@ from drugex.logs import logger
 from drugex.training.interfaces import Model
 from drugex.training.monitors import NullMonitor
 
+# THESIS MODIFICATION: Import time for training duration tracking
+import time
+
 class Explorer(Model, ABC):
     """
     Implements the DrugEx exploration strategy for DrugEx models under the reinforcement learning framework.
@@ -65,6 +68,12 @@ class Explorer(Model, ABC):
         self.best_value = 0
         self.last_save = -1
         self.last_iter = -1
+        
+        # THESIS MODIFICATION: Add logging infrastructure for molecule tracking
+        # These variables track training start time and log file for molecule analysis
+        # Can be removed if thesis-specific logging is not needed
+        self.train_log_path = 'thesis/results/training_molecules.csv'
+        self.train_start_time = None
 
 
     def attachToGPUs(self, gpus):
@@ -235,6 +244,11 @@ class FragExplorer(Explorer):
         float
             The average loss of the agent
         """
+        
+        # THESIS MODIFICATION: Initialize training timer on first call
+        # Helps track total training duration for analysis
+        if self.train_start_time is None:
+            self.train_start_time = time.time()
 
         net = nn.DataParallel(self.agent, device_ids=self.gpus)
         total_steps = len(loader)
@@ -246,6 +260,14 @@ class FragExplorer(Explorer):
             
             # Get rewards
             reward = self.env.getRewards(smiles, frags=frags)
+            
+            # THESIS MODIFICATION: Commented logging infrastructure
+            # This code logs each molecule and its reward during training
+            # Uncomment to enable molecule tracking; ensure thesis/results/ directory exists
+            # elapsed = time.time() - self.train_start_time
+            # with open(self.train_log_path, 'a') as log_f:
+            #     for smi, r in zip(smiles, reward):
+            #         log_f.write(f"{elapsed:.3f},{smi},{float(r)}\n")
 
             # Filter out molecules with multiple fragments by setting reward to 0
             if self.no_multifrag_smiles:
@@ -329,6 +351,12 @@ class FragExplorer(Explorer):
                 # Train the agent with policy gradient
                 train_loss = self.policy_gradient(loader)
 
+                # THESIS MODIFICATION: Validation block disabled for speed
+                # The entire validation evaluation is commented out to speed up training
+                # Uncomment the block below to re-enable validation, model checkpointing, and logging
+                # Note: Early stopping relies on self.last_save being updated, so disable early
+                # stopping if uncommenting this section
+                """
                 # Evaluate model on validation set
                 smiles, frags = self.agent.sample(valid_loader)
                 scores = self.agent.evaluate(smiles, frags, evaluator=self.env, no_multifrag_smiles=self.no_multifrag_smiles)
@@ -351,6 +379,7 @@ class FragExplorer(Explorer):
 
                 # Log performance and generated compounds
                 self.logPerformanceAndCompounds(epoch, metrics, scores)
+                """
         
                 # Early stopping
                 if (epoch >= min_epochs) and  (epoch - self.last_save > patience) : break

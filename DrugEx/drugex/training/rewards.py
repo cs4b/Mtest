@@ -305,3 +305,40 @@ class WeightedSum(RewardScheme):
             ((scores >= thresholds).mean(axis=0, keepdims=True) + 0.01)
         weight = weight / weight.sum()
         return scores.dot(weight.T)
+
+
+# ============================================================================
+# THESIS MODIFICATIONS: Single-objective reward scheme
+# ============================================================================
+# Added for thesis experiments to compare single-target vs multi-target
+# optimization. Can be safely removed if not needed.
+# To revert: Delete this entire class (lines below this comment)
+# ============================================================================
+
+class SingleReward(RewardScheme):
+    """
+    Single target reward scheme
+    
+    Returns raw scores without multi-objective weighting.
+    Useful for single-objective optimization experiments and
+    comparison with single-target baseline methods.
+    """
+    def __call__(self, smiles, scores, thresholds):
+        """
+        Calculate reward as raw scores.
+        
+        Parameters
+        ----------
+        smiles : list
+            SMILES strings (unused)
+        scores : np.ndarray
+            Molecular property scores
+        thresholds : np.ndarray
+            Property thresholds (unused)
+            
+        Returns
+        -------
+        np.ndarray
+            Raw scores without weighting
+        """
+        return scores
