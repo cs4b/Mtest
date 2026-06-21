@@ -1,20 +1,20 @@
-name: nemeth-thesis
+name: thesis-env
 channels:
-  - defaults
-  - dglteam/label/cu117
+  - pytorch
   - conda-forge
+  - defaults
 
 dependencies:
   # Python and core
-  - python=3.11.3
+  - python=3.11
   - pip
   - setuptools>=61.0
   - setuptools_scm[toml]>=6.2
   
   # ML/Data Science Core
   - numpy
-  - scipy==1.11.1
-  - scikit-learn==1.3.0
+  - scipy
+  - scikit-learn
   - pandas
   - matplotlib
   - seaborn
@@ -23,8 +23,8 @@ dependencies:
   - rdkit
   - networkx
   
-  # GPU/Computation
-  - pytorch::torch==2.0.1
+  # GPU/Computation (CUDA 11.8+)
+  - pytorch::pytorch
   - pytorch::pytorch-cuda=11.8
   - dgl
   
@@ -35,7 +35,7 @@ dependencies:
   
   - pip:
     # Additional pip dependencies
-    - charset-normalizer==2.1.0
+    - charset-normalizer
     - deepsmiles
     - selfies
     - PyTDC
@@ -49,9 +49,6 @@ dependencies:
     - mols2grid
 
 # Notes:
-# - This environment combines requirements from:
-#   * diverse-hits/divopt (pyproject.toml + envs/divopt.yml)
-#   * DrugEx/Drugex (pyproject.toml)
-#   * Additional development dependencies
-# - Requires CUDA 11.8 compatible GPU or CPU-only PyTorch
-# - To use CPU-only, replace pytorch::torch and pytorch::pytorch-cuda with: pytorch::cpuonly
+# - GPU version requires CUDA 11.8 compatible NVIDIA GPU
+# - Linux and Mac only (CUDA not well-supported on Windows)
+# - For Windows or CPU-only, use environment-cpu.yml instead
