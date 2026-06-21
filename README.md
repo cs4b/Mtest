@@ -196,6 +196,33 @@ pip install -e diverse-hits/
 - Check CUDA version compatibility (need 11.8+)
 - If using older CUDA, manually edit environment.yml pytorch-cuda version
 
+**Error: `UnavailableInvalidChannel` or `HTTP 404 Not Found for channel`**
+
+This can happen with older conda or network issues. Try these solutions:
+
+```bash
+# Option 1: Update conda first
+conda update -n base -c defaults conda
+
+# Option 2: Clear conda cache and retry
+conda clean --all
+conda env create -f environment-cpu.yml
+
+# Option 3: Use mamba (faster package resolver, often works better)
+conda install -c conda-forge mamba
+mamba env create -f environment-cpu.yml
+```
+
+If still failing, try installing PyTorch separately:
+```bash
+# For CPU-only
+conda create -n thesis-env python=3.11
+conda activate thesis-env
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt  # Other dependencies
+pip install -e DrugEx/ -e diverse-hits/
+```
+
 ### Model Files Not Found
 **Error:** `FileNotFoundError: [Errno 2] No such file or directory: '...Papyrus05.5_graph_trans_PT.pkg'`
 

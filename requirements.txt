@@ -1,0 +1,36 @@
+# Core data science
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+seaborn
+
+# Chemistry
+rdkit
+networkx
+
+# ML/Development
+setuptools>=61.0
+setuptools_scm[toml]>=6.2
+
+# PyTorch (handled separately via conda, but included for reference)
+# For CPU: pip install torch --index-url https://download.pytorch.org/whl/cpu
+# For GPU: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# Additional tools
+pyyaml
+tqdm
+pytest
+charset-normalizer
+deepsmiles
+selfies
+PyTDC
+nltk
+guacamol
+pandas-stubs
+joblib
+gitpython
+requests
+jupyterlab
+mols2grid
