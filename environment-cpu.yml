@@ -37,7 +37,7 @@ dependencies:
     - charset-normalizer
     - deepsmiles
     - selfies
-    - PyTDC
+    - #PyTDC #did not work with CPU-only PyTorch, so commented out for now
     - nltk
     - guacamol
     - pandas-stubs

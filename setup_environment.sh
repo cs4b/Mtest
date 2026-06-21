@@ -74,7 +74,8 @@ source activate "$CONDA_ENV_NAME"
 
 # Install local packages in editable mode
 echo "  → Installing DrugEx package..."
-pip install -e ./DrugEx
+#pip install -e ./DrugEx
+SETUPTOOLS_SCM_PRETEND_VERSION_FOR_DRUGEX=3.4.5 python -m pip install -e ./DrugEx #troubleshoot
 
 echo "  → Installing divopt (diverse-hits) package..."
 pip install -e ./diverse-hits
