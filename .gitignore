@@ -1,0 +1,178 @@
+# ============================================================================
+# Python & Environment
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.mypy_cache/
+
+# ============================================================================
+# IDE & Editor
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================================================
+# Jupyter
+# ============================================================================
+.ipynb_checkpoints/
+
+# ============================================================================
+# Machine Learning Models & Large Files
+# ============================================================================
+# Pre-trained model packages
+*.pkg
+*.ckpt
+*.pth
+*.pt
+*.h5
+*.pkl
+*.pickle
+*.dill
+
+# ============================================================================
+# Large Data Files
+# ============================================================================
+# SMILES and molecular data
+*.smiles
+*.smi
+guacamol_v1_*.smiles*
+*_smiles.*
+*_frags.*
+*_PT_smiles.*
+Papyrus*.tsv
+Papyrus*.txt
+*.tsv              # Large tab-separated data files
+
+# Pretrained models and vocabularies
+*.vocab
+*RandomForest*.json
+
+# Archives and downloads
+*.zip
+*.tar.gz
+*.bz2
+*.gz
+
+# ============================================================================
+# Results & Generated Output
+# ============================================================================
+results/
+backresults/
+results_*/
+thesis/results/
+thesis/backresults/
+generated_molecules.smi
+generated_*.csv
+*.log
+*.out
+
+# ============================================================================
+# Training Runs & Checkpoints
+# ============================================================================
+runs/
+**/runs/
+runs_*/
+checkpoints/
+logs/
+
+# ============================================================================
+# Specific Large Directories
+# ============================================================================
+# Diverse-hits optimizer models (keep code structure only)
+diverse-hits/optimizers/drugex/models/
+diverse-hits/optimizers/drugex/monitor/
+diverse-hits/optimizers/*/
+# Exception: keep the directory structure for drugex
+
+# Diverse-hits data (keep scoring_functions structure for reference)
+diverse-hits/data/data/
+diverse-hits/data/models/
+
+# Thesis directories (keep scripts, exclude everything else)
+thesis/backresults/
+thesis/diverse-hits/
+thesis/DrugEx/
+thesis/Drugex/
+thesis/results/
+thesis/notebooks/
+thesis/figures/
+thesis/tables/
+thesis/briem_lessel_plots/
+
+# ============================================================================
+# Conda & Environment Management
+# ============================================================================
+env.txt
+conda-lock.yml
+pip-freeze.txt
+
+# ============================================================================
+# Git-related
+# ============================================================================
+.git/lfs/
+.gitattributes
+
+# ============================================================================
+# OS-specific
+# ============================================================================
+.env
+.env.local
+
+# ============================================================================
+# Temporary & System Files
+# ============================================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ============================================================================
+# Build artifacts
+# ============================================================================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ============================================================================
+# Database files
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================================================
+# Monitoring & Cache
+# ============================================================================
+.jupyter/
+.jupyterlab/
+.jupyterlab-settings/
