@@ -1,0 +1,46 @@
+# Thesis Resources .gitignore
+# 
+# This file explicitly allows small resource files to be tracked
+# while still ignoring large files that users might copy here
+
+# ============================================================================
+# WHITELIST: Allow these small files (tracked in Git)
+# ============================================================================
+!*.vocab
+!*.txt
+!*.json
+!*.py
+!*.md
+
+# ============================================================================
+# BLACKLIST: Ignore large files (should NOT be tracked)
+# ============================================================================
+# Pre-trained model packages (too large for Git)
+*.pkg
+*.ckpt
+*.pth
+*.pt
+*.h5
+*.pkl
+*.pickle
+*.dill
+
+# Large scoring function files
+*/classifier.pkl
+*/classifier.pkl.bak
+
+# Archives
+*.zip
+*.tar.gz
+*.bz2
+*.gz
+
+# Directories that might contain large files
+*/models/
+*/checkpoints/
+
+# Generic ignore patterns
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
