@@ -89,6 +89,27 @@ mkdir -p thesis/results/rnn
 mkdir -p thesis/results/graph
 
 echo ""
+echo "Step 5: Setting up resource files..."
+# Copy small resource files to their correct locations
+if [ -f "thesis/resources/setup_resources.py" ]; then
+    echo "  → Deploying small resource files..."
+    python thesis/resources/setup_resources.py
+    echo ""
+else
+    echo "  ⚠️  Warning: thesis/resources/setup_resources.py not found"
+    echo "     Resources may not be properly deployed"
+fi
+
+echo ""
+echo "Step 6: Verifying all input files..."
+# Verify that all required files are in place
+if [ -f "verify_input_files.py" ]; then
+    python verify_input_files.py
+else
+    echo "  ⚠️  Warning: verify_input_files.py not found"
+fi
+
+echo ""
 echo "=========================================="
 echo "✓ Setup complete!"
 echo "=========================================="
@@ -101,9 +122,11 @@ echo "  conda activate $CONDA_ENV_NAME"
 echo "  python thesis/scripts/YOUR_SCRIPT.py"
 echo ""
 echo "IMPORTANT NOTES:"
-echo "  - Pre-trained models (*.pkg, *.vocab) must be placed in:"
-echo "    diverse-hits/optimizers/drugex/"
-echo "  - Data files (*.tsv, *.smiles) must be placed in:"
-echo "    diverse-hits/data/ and diverse-hits/data/scoring_functions/"
-echo "  - See README.md for download instructions"
+echo "  ✓ Environment setup complete"
+echo "  ✓ Local packages installed (DrugEx, divopt)"
+echo "  ✓ Small resource files deployed"
+echo "  - See verification output above for missing large files"
+echo "  - If large files are missing, download from sources indicated"
+echo "  - Re-run setup_environment.sh after adding large files to verify"
+echo "  - See RESOURCES_MANIFEST.md for download instructions"
 echo ""
