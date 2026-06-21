@@ -24,8 +24,8 @@ dependencies:
   - networkx
   
   # GPU/Computation (CUDA 11.8+)
-  - pytorch::pytorch
-  - pytorch::pytorch-cuda=11.8
+  - pytorch
+  - pytorch-cuda=11.8
   - dgl
   
   # Other tools

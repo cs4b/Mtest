@@ -24,7 +24,8 @@ dependencies:
   - networkx
   
   # CPU-only PyTorch (Windows, Mac, Linux compatible)
-  - pytorch::pytorch::cpuonly
+  - pytorch
+  - cpuonly
   
   # Other tools
   - pyyaml
