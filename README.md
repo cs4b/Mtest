@@ -59,26 +59,24 @@ pip install -e DrugEx/
 pip install -e diverse-hits/
 ```
 
-### 2. Download Required Models & Data
+### 2. Setup Resource Files
 
-Several scripts require pre-trained models and datasets. These are **not** included in the repository due to size constraints.
+Resource files (vocabularies, fragment bases, SMILES data, and classifiers) are automatically deployed during environment setup.
 
-**Pre-trained Models Needed:**
-- `Papyrus05.5_graph_trans_PT.pkg` - DrugEx graph transformer model
-- `Papyrus05.5_graph_trans_PT.vocab` - Vocabulary for graph model
-- `Papyrus05.5_smiles_rnn_PT.pkg` - DrugEx SMILES RNN model
-- `Papyrus05.5_smiles_rnn_PT.vocab` - Vocabulary for RNN model
+After running `setup_environment.sh`, the setup script will:
+- Copy all small resource files to their correct locations
+- Create necessary symlinks for data files
+- Check for pre-trained model packages and show download instructions if missing
+
+**Pre-trained Model Packages Only:**
+
+Only the pre-trained model packages need to be obtained separately (both are large files):
+- `Papyrus05.5_graph_trans_PT.pkg` (153 MB) - [Graph Transformer model](https://zenodo.org/records/7085421)
+- `Papyrus05.5_smiles_rnn_PT.pkg` (29 MB) - [SMILES RNN model](https://zenodo.org/records/7635064)
 
 **Location:** Place these files in `diverse-hits/optimizers/drugex/`
 
-**Data Files Needed:**
-- `drd2_smiles.csv` - DRD2 SMILES data
-- `drd2_fragbase.txt` - DRD2 fragments base
-- Scoring functions in `diverse-hits/data/scoring_functions/drd2/`
-
-**Location:** Place these files in `diverse-hits/data/` and `diverse-hits/data/scoring_functions/`
-
-*Contact the repository maintainer for download links or instructions if needed.*
+*Contact the repository maintainer for download links if needed.*
 
 ### 3. Verify Installation
 
@@ -145,7 +143,17 @@ Scripts typically output results to `thesis/results/` directories.
 │
 ├── thesis/                    # Thesis-specific work
 │   ├── scripts/               # Training & analysis scripts
+│   ├── resources/             # Small resource files (automatically deployed)
+│   │   ├── models/            # Vocabularies
+│   │   ├── fragbases/         # Fragment base files
+│   │   ├── smiles_data/       # SMILES datasets
+│   │   └── scoring_functions/ # Classifiers & configs
 │   └── results/               # Output results
+│
+├── info/                      # Documentation & detailed analysis
+│   ├── DRUGEX_DIFFERENCES.md
+│   ├── THESIS_SCRIPTS_INPUT_FILES.md
+│   └── ...                    # Other detailed docs
 │
 ├── setup_environment.sh       # Environment setup script
 ├── environment.yml            # GPU environment (CUDA 11.8+)
