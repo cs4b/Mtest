@@ -148,7 +148,8 @@ pip-freeze.txt
 .env.local
 
 # ============================================================================
-# Documentation & Setup Files (removed from tracking)
+# Documentation & Setup Files (not tracked, kept locally for reference)
+# These can be found in info/ folder if needed
 # ============================================================================
 GITLAB_CLEANUP_ANALYSIS.md
 GITLAB_SETUP_GUIDE.md
