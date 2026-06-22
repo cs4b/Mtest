@@ -26,6 +26,7 @@ dependencies:
   # CPU-only PyTorch (Windows, Mac, Linux compatible)
   - pytorch
   - cpuonly
+  - dgl
   
   # Other tools
   - pyyaml
