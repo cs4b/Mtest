@@ -87,44 +87,33 @@ python -c "import drugex; import divopt; print('✓ Setup successful')"
 
 ## Running Thesis Scripts
 
-### Available Scripts
+All optimization scripts are in `thesis/scripts/`. Main scripts use the `DE_` prefix (DrugEx variants).
 
-All scripts are in `thesis/scripts/`. Key scripts include:
-
-| Script | Purpose |
-|--------|---------|
-| `train.py` | Train DrugEx with graph transformer |
-| `seq.py` | Train DrugEx with SMILES RNN |
-| `extract_metrics.py` | Extract metrics from results |
-| `check_budget_constraints.py` | Verify optimization budgets |
-| `analyze_reward_distributions.py` | Analyze reward signals |
-| `ModelScorer.py` | Score molecules with custom functions |
-
-### Running a Script
+### Example: Distributed DrugEx with Graph Transformer
 
 ```bash
 conda activate thesis-env
 cd thesis/scripts/
-python SCRIPT_NAME.py [options]
+python DE_dist_samp_gt.py
 ```
 
-**Example: Train graph-based DrugEx**
+### Example: Distributed DrugEx with SMILES RNN
+
 ```bash
 conda activate thesis-env
 cd thesis/scripts/
-python train.py
+python DE_dist_samp_RNN_Final.py
 ```
 
-**Example: Extract metrics from results**
-```bash
-conda activate thesis-env
-cd thesis/scripts/
-python extract_metrics.py
-```
+### Other Available DE_ Variants
+
+- `DE_dist_samp_gt_expreplay.py` - Graph Transformer with experience replay
+- `DE_dist_samp_gt_missing_values.py` - Graph Transformer with missing value handling
+- `DE_gt_invalid.py` - Graph Transformer with invalid SMILES handling
 
 ### Output
 
-Scripts typically output results to `thesis/results/` directories.
+Scripts output results to `thesis/results/` directories.
 
 ## Repository Structure
 
@@ -166,14 +155,16 @@ Scripts typically output results to `thesis/results/` directories.
 **GPU Version (environment.yml):**
 - Python 3.11
 - PyTorch with CUDA 11.8 support
-- RDKit, DGL, scikit-learn, pandas, numpy, scipy
+- DGL (Deep Graph Library) for graph neural networks
+- RDKit, scikit-learn, pandas, numpy, scipy
 - For Linux/Mac with NVIDIA GPU
 
 **CPU-Only Version (environment-cpu.yml):**
 - Python 3.11
 - PyTorch CPU-only
-- Same dependencies as GPU version
-- For Windows, Mac, or systems without NVIDIA GPU
+- DGL for CPU (supports graph-based models on CPU)
+- Same core dependencies as GPU version
+- For Windows, Mac, or CPU-only systems
 
 For complete dependencies, see respective environment files.
 
@@ -268,30 +259,6 @@ If `bash setup_environment.sh` fails on Windows:
 conda remove rdkit
 conda install -c conda-forge rdkit
 ```
-
-## Testing
-
-Run the test suite:
-
-```bash
-cd diverse-hits/
-pytest test/ -v --tb=short
-
-# Run specific test
-pytest test/test_scoring_function.py -v
-```
-
-## Performance Notes
-
-Typical performance on modern GPU (e.g., RTX 3090):
-- **DrugEx**: 1,000 molecules/epoch (~5s/epoch)
-- **CPU-only**: ~10-50x slower depending on the algorithm
-
-## Citation
-
-If you use this repository in research, please cite:
-- DrugEx: [Link to publications]
-- GuacaMol: [Link to publications]
 
 ## License
 
