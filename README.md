@@ -72,7 +72,7 @@ After running `setup_environment.sh`, the setup script will:
 
 Only the pre-trained model packages need to be obtained separately (both are large files):
 - `Papyrus05.5_graph_trans_PT.pkg` (153 MB) - [Graph Transformer model](https://zenodo.org/records/7085421)
-- `Papyrus05.5_smiles_rnn_PT.pkg` (29 MB) - [SMILES RNN model](https://zenodo.org/records/7635064)
+- `Papyrus05.5_smiles_rnn_PT.pkg` (29 MB) - [SMILES RNN model](https://zenodo.org/records/7378923)
 
 **Location:** Place these files in `diverse-hits/optimizers/drugex/`
 
